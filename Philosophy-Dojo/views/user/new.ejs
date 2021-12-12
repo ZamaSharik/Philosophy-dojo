@@ -1,0 +1,24 @@
+<%- include('../partials/header.ejs') %>
+
+    <div class="footer-class" style="background-color: #b54442;">
+        <div class="footer"><h2>Signup</h2></div>
+        <div class="footer contact meetup-info">
+            <form action = '/users' method = 'POST'>
+                <label for="firstName">📖 First Name:</label>
+                <input type="text" id="firstName" name="firstName" minlength="3" maxlength = "20" required><br>
+
+                <label for="lastName">📓  Last Name:</label>
+                <input type="text" id="lastName" name="lastName" minlength="1" maxlength = "25" required><br>
+    
+                <label for="email">👨🏻‍🏫👩🏻‍🏫  Email</label>
+                <input type="email" id="email"  name="email" required><br>
+    
+                <label for="password">🔑  Password</label>
+                <input type="password" id="password"  name="password" minlength="8" maxlength = "64" required><br><br>
+
+                <button class="btnn" type="submit">Sign up</button>
+        </form>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs')%>

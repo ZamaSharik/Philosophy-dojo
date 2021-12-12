@@ -1,0 +1,39 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="footer-class" style="background-color: #b54442;">
+    <div class="footer"><h2>Edit Meetup Details</h2></div>
+    <div class="footer contact meetup-info">
+        <form action = '/connections/<%= connection.id %>?_method=PUT' method="POST">
+            <label for="topicName">📖 Topic Name:</label>
+            <input type="text" id="topicName" name="topic" value="<%= connection.topic%>" required><br>
+
+            <label for="titleName">📓  Title:</label>
+            <input type="text" id="titleName" value="<%= connection.title%>" name="title" required><br>
+
+            <label for="host">👨🏻‍🏫👩🏻‍🏫  Host:</label>
+            <input type="text" id="host"  value="<%= connection.hostname%>" name="hostname" required><br>
+
+            <label for="date">📅  Date:</label>
+            <input type="date" id="date" value="<%= connection.date%>" name="date" required><br><br>
+            
+            <label for="startTime">⏰ Start Time:</label>
+            <input type="time" id="startTime" value=<%= connection.startTime%> name="startTime" required><br><br>
+
+            <label for="endTime">🕰️ End Time:</label>
+            <input type="time" id="endTime" value="<%= connection.endTime%>" name="endTime" required><br><br>
+            
+            <label for="details">📑  Details:</label>
+            <input type="text" id="details" value="<%= connection.description%>" name="description" required minlength="10"><br>
+
+            <label for="picture">📷 Image Link:</label>
+            <input type="text" id="picture" value="<%= connection.image%>" name="image" required><br>
+
+            <label for="place">🚩  Place:</label>
+            <input type="text" id="place" value="<%= connection.location%>" name="location" required><br>
+            
+            <button class="btnn" type="submit">Update</button>
+        </form>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>

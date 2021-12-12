@@ -1,0 +1,29 @@
+{
+  "name": "project-2",
+  "version": "1.0.0",
+  "description": "Philosophy Dojo Web App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mohammed Sharik U Zama",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^4.6.0",
+    "datetime": "^0.0.3",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.5.1",
+    "express-session": "^1.17.2",
+    "express-validator": "^6.13.0",
+    "lodash": "^4.17.21",
+    "luxon": "^2.0.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.11.15",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.13",
+    "uuid": "^8.3.2"
+  }
+}

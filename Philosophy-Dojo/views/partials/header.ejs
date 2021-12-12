@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/9cb55bc76f.js" crossorigin="anonymous"></script>
+    <title>Philosophy Dojo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/card.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="site-header-inner">
+
+            <div id="top-header">
+                <div id="header-left">
+                    <div class="logo"><a href="/">Philosophy <span id="dojo">Dojo</span></a></div>
+                </div>
+                <div class="header-right">
+                    <% if(!user) {%>
+                    <div><a class="signup" href="/users/new">Sign Up!</a></div>
+                    <div><a class="login" href="/users/login">Login</a></div>
+                    <%} else {%>
+                    <p id="intro">Welcome, <%=firstName%></p>
+                    <div><a class="login" href="/users/profile">Profile</a></div>
+                    <div><a class="login" href="/users/logout">Logout</a></div>
+                    <%  }%>
+                </div>
+            </div>
+
+            <div id="bottom-header">
+                <div>
+                    <p style="font-weight: 900; font-size: 45px;">A place for everyone who's into Philosophy, Emotional
+                        Intelligence and Psychology</p>
+                    <div id="btns">
+                        <div class="btnn" style="margin-right: 20px;"><a href="/connections">Topics</a></div>
+                        <div class="btn-green"><a href="/connections/new">Start a new meetup</a></div>
+                    </div>
+                </div>
+                <div>
+                    <img style="max-width: 100%; max-width: 100%;" src="/images/bermuda-718.png" alt="philosophy">
+                </div>
+            </div>
+        </div>
+    </header>
+    
+        <% if(errorMessages.length > 0) {%>
+
+        <% errorMessages.forEach(message=>{%>
+            <div class="footer-class" style="background-color: #b54442;">
+                <h2 class="footer error"><%=message%></h2>
+            
+            </div>
+        <%});%>
+            
+        <%}%>
+        <% if(successMessages.length > 0) {%>
+        <% successMessages.forEach(message=>{%>
+            <div class="footer-class" style="background-color: #b54442;">
+                    <h2 class="footer success"><%=message%></h2>
+                </div>
+        <%});%>
+        <%}%>
+    

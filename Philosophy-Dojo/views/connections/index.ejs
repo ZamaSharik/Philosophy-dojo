@@ -1,0 +1,27 @@
+<%- include('../partials/header.ejs') %>
+
+<% if(conn && JSON.stringify(conn) !== '{}') {%>
+  <div class="card_row"> 
+    <% for(let topicKey in conn) { let connection = conn[topicKey]%> 
+    <h2 class="title"><%= topicKey %> </h2>
+      <ul class="cards">
+        <% connection.forEach(obj=>{ %> 
+        <li class="cards_item">
+          <div class="card">
+            <div class="card_image"><img src="<%= obj.image %>" title="source: imgur.com" alt="meetup_img_here" /></div>
+            <div class="card_content">
+              <h2 class="card_title"><%= obj.title %></h2>
+              <p class="card_text">
+                <%= obj.description %> 
+              </p>
+            </div>
+            <a class="btn" href="/connections/<%= obj.id %>">Enter the Meetup</a>
+          </div>
+        </li>
+        <% }); %>
+        </ul>
+    <%  }} else {  %>
+      <p class="card_row main-content">Sorry, there are no meetup's to display at the moment</p><br>
+   <% } %> 
+  </div>
+  <%- include('../partials/footer.ejs') %>

@@ -1,0 +1,43 @@
+<%- include('../partials/header.ejs') %>
+
+    <div class="main-content-connection">
+        <div class="header-2-left">
+            <h2 style="text-align: left;">About your meetup: </h2>
+            <small>Posted <%=connection.createdAt.toLocaleString()%> by <%=connection.author.firstName +' '+ connection.author.lastName%></small>
+            <p>Topic name: <%= connection.topic %> </p>
+            <p>Title: <%= connection.title %> </p>
+            <p>Hosted by: <%= connection.hostname %> </p>
+            <p>Date and Time: <%= connection.date %>, <%= connection.startTime %> - <%= connection.endTime %> </p>
+            <p>Location: <%= connection.location %> </p>
+            <p>Details: <%= connection.description %> 
+            <p>RSVP: <%= rsvpCnt%> people have RSVP'd</p>
+            </p>
+        </div>
+        <% if(user == connection.author._id){%> 
+        <div class="btns header-2-right">
+        <form>
+           
+           <button class="btnn update" type="submit" formmethod="GET" formaction="/connections/<%=connection.id%>/edit">Update</button>
+           <button class="btnn update" type="submit" formmethod="POST" formaction="/connections/<%=connection.id%>?_method=DELETE">Delete</button>
+        </form>
+        </div>  
+    <% } else { %>
+        <div class="btns header-2-right">
+            <form>
+                <% if(!user) {%>
+                    <button class="btnn update" type="submit" name=status value='YES' formmethod="GET" formaction="/users/login">Yes</button>
+                    <button class="btnn update" type="submit" name=status value='NO' formmethod="GET" formaction="/users/login">No</button>
+                    <button class="btnn update" type="submit" name=status value='MAYBE' formmethod="GET" formaction="/users/login">Maybe</button>
+                <% } else { %>
+                    <button class="btnn update" type="submit" name=status value='YES' formmethod="POST" formaction = "/connections/<%= connection.id %>/rsvp">Yes</button>
+                    <button class="btnn update" type="submit" name=status value='NO' formmethod="POST" formaction = "/connections/<%= connection.id %>/rsvp">No</button>
+                    <button class="btnn update" type="submit" name=status value='MAYBE' formmethod="POST" formaction = "/connections/<%= connection.id %>/rsvp">Maybe</button>
+                <% } %>  
+            </form>
+            </div>
+        <% } %>  
+        
+    </div>
+    
+
+<%- include('../partials/footer.ejs') %> 

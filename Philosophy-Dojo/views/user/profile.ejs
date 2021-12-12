@@ -1,0 +1,91 @@
+<%- include('../partials/header.ejs')%>
+
+<div class="main-content-connection">
+    <div class="header-2-left">
+        <h2>Welcome, <%=user.firstName%></h2>
+    <%   if(connections.length) { %>
+        <p>You have created the following meetup's</p>
+        <table class='profile'>
+            <tr>
+                <th>Meetup Name</th>
+                <th>Meetup Topic</th>
+                <th>Actions</th>
+            </tr>
+            <% connections.forEach(conn => { %> 
+                <tr>
+                    <td>
+                        <a id="titles" href="/connections/<%= conn.id%>">
+                           <p><%=conn.title%></p> 
+                        </a>
+                        
+                    </td>
+                    <td>
+                        <p>
+                            <%=conn.topic%>
+                        </p>
+                    </td>
+                    <td>
+                        <div class="btns header-2-right">
+                            <form>
+                                <button class="btnn update" type="submit" formmethod="GET" formaction="/connections/<%=conn.id%>/edit">Update</button>
+                                <button class="btnn update" type="submit" formmethod="POST" formaction="/connections/<%=conn.id%>?_method=DELETE">Delete</button>
+                             </form>
+                        </div>
+                    </td>
+                </tr>
+                <%});%>
+        </table>
+    <% } else { %>
+    <p>You have not created any meetup's</p>
+    <% } %>   
+
+    <br>
+
+    <h2><%=user.firstName%>'s RSVPs</h2>
+    <%   if(rsvpArr.length > 0) { %>
+        <p>You have created the following meetup's</p>
+        <table class='profile'>
+            <tr>
+                <th>Meetup Name</th>
+                <th>Meetup Topic</th>
+                <th>Attending?</th>
+                <th>Actions</th>
+            </tr>
+            <% for(let i=0; i<rsvpArr.length; i++){ %> 
+                <tr>
+                    <td>
+                        <a id="titles" href="/connections/<%=rsvpArr[i].connectionId._id%>">
+                           <p><%=rsvpArr[i].connectionId.title%></p> 
+                        </a>
+                        
+                    </td>
+                    <td>
+                        <p>
+                            <%=rsvpArr[i].connectionId.topic%>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <%=rsvpArr[i].status%>
+                        </p>
+                    </td>
+                    <td>
+                        <div class="btns header-2-right">
+                            <form>
+                                <button class="btnn update" type="submit" formmethod="GET" formaction="/connections/<%=rsvpArr[i].connectionId._id%>">Update</button>
+                                <button class="btnn update" type="submit" formmethod="POST" formaction="/connections/<%=rsvpArr[i].connectionId._id%>/rsvpDelete">Delete</button>
+                             </form>
+                        </div>
+                    </td>
+                </tr>
+                <%}%>
+        </table>
+    <% } else { %>
+    <p>You have not RSVP'd any meetup's</p>
+    <% } %>   
+    </div>
+        </div>
+
+        
+
+<%- include('../partials/footer.ejs')%>
